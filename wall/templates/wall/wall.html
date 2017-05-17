@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 {% load staticfiles %}
 <html lang="en">
 <head>
@@ -8,11 +9,25 @@
     <meta charset="UTF-8">
     <title> wall </title>
 </head>
+
 <body>
     <div class="head"> <h1 class="logo"> SiteName </h1> </div>
 
     <div class="navigation"> Navigate </div>
-    <div class="content"> Content </div>
+    <div class="content">
+
+        {% for post in posts %}
+        <div>
+            <p> <h3> {{post.caption}} </h3> </p>
+            <p> img: <a href={{post.image}}> image </a></p>
+            <p> published: {{post.pub_date}} </p>
+            <p> content: {{post.content}}</p>
+            {{ post }}
+        </div>
+        {% endfor %}
+
+    </div>
     <div class="wrapper"> Wrapper </div>
 </body>
+
 </html>
