@@ -1,0 +1,6 @@
+# folder for tempfile
+tmp/
+
+
+#ignor only doc-file 
+tmp/*.doc
