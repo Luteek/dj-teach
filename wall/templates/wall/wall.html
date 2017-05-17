@@ -5,6 +5,7 @@
 <head>
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <link href='//fonts.googleapis.com/css?family=Sofia' rel='stylesheet'>
     <link rel="stylesheet" href="{% static 'wall/css/style.css' %}">
     <meta charset="UTF-8">
     <title> wall </title>
@@ -20,9 +21,9 @@
         <div>
             <p> <h3> {{post.caption}} </h3> </p>
             <p> img: <a href={{post.image}}> image </a></p>
+            Content:  <p class="post_text">  {{post.content}}</p>
             <p> published: {{post.pub_date}} </p>
-            <p> content: {{post.content}}</p>
-            {{ post }}
+
         </div>
         {% endfor %}
 
