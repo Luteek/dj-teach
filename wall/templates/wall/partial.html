@@ -7,8 +7,6 @@
         <div class="post_full">
             <h3 class="caption_post"> {{post.caption}} </h3>
 
-            <p> img: <a href={{post.image}}> image </a></p>
-
              <!--- |truncatewords:80|safe позволяет ебнуть только 80 слов в пост    --->
             Content__:  <p class="post_text">  {{post.content|truncatewords:80|safe }}
 
