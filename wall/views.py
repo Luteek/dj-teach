@@ -39,7 +39,7 @@ def postPartial_new(request):
             post = form.save(commit=False)
             post.pub_date = timezone.now()
             post.save()
-            return  redirect('/wall/')
+            return  redirect('/wall/partial.html')
         else:
             return  render(request, 'wall/post_partial_edit.html', {'form': form})
     else:
