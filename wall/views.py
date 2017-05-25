@@ -7,6 +7,18 @@ from .forms import PostFrom, PostPartialForm
 # Create your views here.
 
 
+def general(request):
+    return render(request, 'wall/general.html')
+
+def classes(request):
+    return render(request, 'wall/class.html')
+
+def parent(request):
+    return render(request, 'wall/parents.html')
+
+def colleagues(request):
+    return render(request, 'wall/colleagues.html')
+
 def wall(request):
     """отображает нам все посты"""
     # -pub_date сортирует по дате список постов. Новые вверху

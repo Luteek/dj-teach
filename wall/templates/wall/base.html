@@ -15,12 +15,19 @@
 
 <div class="wrapper">
 
-    <div class="head"> <h1 class="logo"> SiteName </h1> </div>
-
+    <div class="head">
+        <h1 class="logo"> SiteName </h1>
+        <a href="{% url 'post_new' %}" class="top-menu"><button type="button" class="btn btn-secondary"> Создать </button></a>
+        <a href="{% url 'post_partial_new' %}" class="top-menu"><button type="button" class="btn btn-secondary"> Простой пост </button></a>
+    </div>
 
     <div class="navigation">
-        <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
-        <a href="{% url 'post_partial_new' %}" class="top-menu"><span class="glyphicon glyphicon-heart"></span></a>
+        <ul class="nav_ul">
+            <li><a href="/wall/">Главная </a></li>
+            <li><a href="/wall/class"> Мой класс </a></li>
+            <li><a href="/wall/parents"> Родителям  </a></li>
+            <li><a href="/wall/colleagues"> Коллегам </a></li>
+        </ul>
     </div>
 
     <div class="content">
