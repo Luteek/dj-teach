@@ -27,3 +27,52 @@ class PostPartial(models.Model):
 
     def __str__(self):
         return self.caption
+
+class General(models.Model):
+    caption = models.CharField(max_length=100)
+    content = models.CharField(max_length=2000)
+    pub_date = models.DateTimeField('date published')
+
+    def publish(self):
+        self.pub_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.caption
+
+class Classes(models.Model):
+    caption = models.CharField(max_length=100)
+    content = models.CharField(max_length=2000)
+    pub_date = models.DateTimeField('date published')
+
+    def publish(self):
+        self.pub_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.caption
+
+
+class Parents(models.Model):
+    caption = models.CharField(max_length=100)
+    content = models.CharField(max_length=2000)
+    pub_date = models.DateTimeField('date published')
+
+    def publish(self):
+        self.pub_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.caption
+
+class Colleagues(models.Model):
+    caption = models.CharField(max_length=100)
+    content = models.CharField(max_length=2000)
+    pub_date = models.DateTimeField('date published')
+
+    def publish(self):
+        self.pub_date = timezone.now()
+        self.save()
+
+    def __str__(self):
+        return self.caption

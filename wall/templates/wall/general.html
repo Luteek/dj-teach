@@ -3,4 +3,19 @@
 
     {% block content %}
                 <h2>  Главная </h2>
+        <a href="{% url 'new_postGeneral' %}" class="top-menu"><button type="button" class="btn btn-secondary"> Создать </button></a>
+        {% for post in posts %}
+        <div class="post_full">
+            <h3 class="caption_post"> {{post.caption}} </h3>
+
+             <!--- |truncatewords:80|safe позволяет ебнуть только 80 слов в пост    --->
+            Content__:  <p class="post_text">  {{post.content|truncatewords:80|safe }}
+
+            </p>
+
+            <p> published: {{post.pub_date}} </p>
+
+        </div>
+        {% endfor %}
+
     {% endblock %}

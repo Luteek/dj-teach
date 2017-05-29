@@ -1,23 +1,84 @@
 from django.utils import timezone
 
 from django.shortcuts import render, redirect
-from .models import Post, PostPartial
-from .forms import PostFrom, PostPartialForm
+from .models import Post, PostPartial, General, Classes, Colleagues, Parents
+from .forms import PostFrom, PostPartialForm, GeneralPost,  ClassesPost, ParentsPost, ColleaguesPost
 
 # Create your views here.
-
-
 def general(request):
-    return render(request, 'wall/general.html')
+    post = General.objects.order_by('-pub_date')
+    return render(request, 'wall/general.html', {'posts': post})
 
 def classes(request):
-    return render(request, 'wall/class.html')
+    post = Classes.objects.order_by('-pub_date')
+    return render(request, 'wall/class.html', {'posts': post})
 
 def parent(request):
-    return render(request, 'wall/parents.html')
+    post = Parents.objects.order_by('-pub_date')
+    return render(request, 'wall/parents.html', {'posts': post})
 
 def colleagues(request):
-    return render(request, 'wall/colleagues.html')
+    post = Colleagues.objects.order_by('-pub_date')
+    return render(request, 'wall/colleagues.html', {'posts': post})
+
+def new_postGeneral(request):
+    if request.method == "POST":
+        form = GeneralPost(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.pub_date = timezone.now()
+            post.save()
+            return redirect('/wall/')
+        else:
+            return render(request, 'wall/new_general.html', {'form': form})
+    else:
+        form = GeneralPost()
+        return render(request, 'wall/new_general.html', {'form': form})
+
+def new_postClasses(request):
+    if request.method == "POST":
+        form = ClassesPost(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.pub_date = timezone.now()
+            post.save()
+            return redirect('/wall/class')
+        else:
+            return render(request, 'wall/new_class.html', {'form': form})
+    else:
+        form = ClassesPost()
+        return render(request, 'wall/new_class.html', {'form': form})
+
+def new_postParents(request):
+    if request.method == "POST":
+        form = ParentsPost(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.pub_date = timezone.now()
+            post.save()
+            return redirect('/wall/parents')
+        else:
+            return render(request, 'wall/new_parents.html', {'form': form})
+    else:
+        form = ParentsPost()
+        return render(request, 'wall/new_parents.html', {'form': form})
+
+def new_postColleagues(request):
+    if request.method == "POST":
+        form = ColleaguesPost(request.POST)
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.pub_date = timezone.now()
+            post.save()
+            return redirect('/wall/colleagues')
+        else:
+            return render(request, 'wall/new_colleg.html', {'form': form})
+    else:
+        form = ColleaguesPost()
+        return render(request, 'wall/new_colleg.html', {'form': form})
+
+
+
 
 def wall(request):
     """отображает нам все посты"""
