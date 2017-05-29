@@ -39,3 +39,4 @@ class ColleaguesPost(forms.ModelForm):
     class Meta:
         model = Colleagues
         fields = ('caption', 'content',)
+

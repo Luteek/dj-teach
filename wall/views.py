@@ -21,6 +21,9 @@ def colleagues(request):
     post = Colleagues.objects.order_by('-pub_date')
     return render(request, 'wall/colleagues.html', {'posts': post})
 
+
+## NEW POSTS
+
 def new_postGeneral(request):
     if request.method == "POST":
         form = GeneralPost(request.POST)
@@ -30,10 +33,10 @@ def new_postGeneral(request):
             post.save()
             return redirect('/wall/')
         else:
-            return render(request, 'wall/new_general.html', {'form': form})
+            return render(request, 'wall/new_post/new_general.html', {'form': form})
     else:
         form = GeneralPost()
-        return render(request, 'wall/new_general.html', {'form': form})
+        return render(request, 'wall/new_post/new_general.html', {'form': form})
 
 def new_postClasses(request):
     if request.method == "POST":
@@ -44,10 +47,10 @@ def new_postClasses(request):
             post.save()
             return redirect('/wall/class')
         else:
-            return render(request, 'wall/new_class.html', {'form': form})
+            return render(request, 'wall/new_post/new_class.html', {'form': form})
     else:
         form = ClassesPost()
-        return render(request, 'wall/new_class.html', {'form': form})
+        return render(request, 'wall/new_post/new_class.html', {'form': form})
 
 def new_postParents(request):
     if request.method == "POST":
@@ -58,10 +61,10 @@ def new_postParents(request):
             post.save()
             return redirect('/wall/parents')
         else:
-            return render(request, 'wall/new_parents.html', {'form': form})
+            return render(request, 'wall/new_post/new_parents.html', {'form': form})
     else:
         form = ParentsPost()
-        return render(request, 'wall/new_parents.html', {'form': form})
+        return render(request, 'wall/new_post/new_parents.html', {'form': form})
 
 def new_postColleagues(request):
     if request.method == "POST":
@@ -72,10 +75,30 @@ def new_postColleagues(request):
             post.save()
             return redirect('/wall/colleagues')
         else:
-            return render(request, 'wall/new_colleg.html', {'form': form})
+            return render(request, 'wall/new_post/new_colleg.html', {'form': form})
     else:
         form = ColleaguesPost()
-        return render(request, 'wall/new_colleg.html', {'form': form})
+        return render(request, 'wall/new_post/new_colleg.html', {'form': form})
+
+# POSTS IN NEW PAGE of ID
+def postGeneral(request, type, ident):
+    if type == '1':
+        post = General.objects.get(id=ident)
+    elif type =='2':
+        post = Classes.objects.get(id=ident)
+    elif type == '3':
+        post = Parents.objects.get(id=ident)
+    elif type == '4':
+        post = Colleagues.objects.get(id=ident)
+    return render(request, 'wall/post.html', {"post": post})
+
+
+
+# EDIT POSTS
+
+
+
+
 
 
 

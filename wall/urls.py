@@ -17,6 +17,7 @@ urlpatterns = [
     url(r'^new_parents$', views.new_postParents, name='new_postParents'),
     url(r'^new_colleagues$', views.new_postColleagues, name='new_postColleagues'),
 
+    url(r'^post/(?P<type>\d+)/(?P<ident>\d+)/$', views.postGeneral, name='post'),
 
     url(r'^partial/$', views.partial, name='partial'),
     url(r'^post/new/$', views.post_new, name='post_new'),
