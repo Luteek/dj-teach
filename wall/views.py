@@ -1,5 +1,6 @@
 from django.utils import timezone
 
+
 from django.shortcuts import render, redirect
 from .models import Post, PostPartial, General, Classes, Colleagues, Parents
 from .forms import PostFrom, PostPartialForm, GeneralPost,  ClassesPost, ParentsPost, ColleaguesPost
@@ -95,7 +96,31 @@ def postGeneral(request, type, ident):
 
 
 # EDIT POSTS
+def postEdit(request, type, ident):
+    if type == '1':
+        post = General.objects.get(id=ident)
+        if request.method == "POST":
+            form = GeneralPost(request.POST, instance = post)
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.pub_date = timezone.now()
+                post.save()
+                return redirect('/wall/')
+            else:
+                return render(request, 'wall/edit_post/edit_general.html', {'form': form})
+        else:
+            form = GeneralPost(instance = post)
+            return render(request, 'wall/edit_post/edit_general.html', {'form': form})
 
+
+
+    elif type =='2':
+        post = Classes.objects.get(id=ident)
+    elif type == '3':
+        post = Parents.objects.get(id=ident)
+    elif type == '4':
+        post = Colleagues.objects.get(id=ident)
+    return render(request, 'wall/edit_post/edit_general.html', {"post": post})
 
 
 

@@ -19,6 +19,9 @@ urlpatterns = [
 
     url(r'^post/(?P<type>\d+)/(?P<ident>\d+)/$', views.postGeneral, name='post'),
 
+    # try url for edit post 
+    url(r'^post/edit/(?P<type>\d+)/(?P<ident>\d+)/$', views.postEdit, name='edit'),
+
     url(r'^partial/$', views.partial, name='partial'),
     url(r'^post/new/$', views.post_new, name='post_new'),
     url(r'^post/new_partial/$', views.postPartial_new, name='post_partial_new'),

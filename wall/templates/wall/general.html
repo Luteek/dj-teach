@@ -9,8 +9,8 @@
             <div class="post_full">
 
                  <h3 class="caption_post"> {{post.caption}} </h3>
-                 <a href="" class="glyphicon glyphicon-pencil"></a>
-                 <!--- |truncatewords:80|safe позволяет ебнуть только 80 слов в пост    --->
+                 <a href="post/edit/1/{{post.id}}" class="glyphicon glyphicon-pencil">  </a>
+                 <!--- |truncatewords:80|safe позволяет ебнуть только 80 слов в пост    ---->
                      <p class="post_text">  {{post.content|truncatewords:80|safe }}</p>
 
                 <p> published: {{post.pub_date}} </p>
