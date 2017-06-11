@@ -111,16 +111,50 @@ def postEdit(request, type, ident):
         else:
             form = GeneralPost(instance = post)
             return render(request, 'wall/edit_post/edit_general.html', {'form': form})
-
-
-
     elif type =='2':
         post = Classes.objects.get(id=ident)
+        if request.method == "POST":
+            form = GeneralPost(request.POST, instance = post)
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.pub_date = timezone.now()
+                post.save()
+                return redirect('/wall/')
+            else:
+                return render(request, 'wall/edit_post/edit_class.html', {'form': form})
+        else:
+            form = GeneralPost(instance = post)
+            return render(request, 'wall/edit_post/edit_class.html', {'form': form})
     elif type == '3':
         post = Parents.objects.get(id=ident)
+        if request.method == "POST":
+            form = GeneralPost(request.POST, instance = post)
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.pub_date = timezone.now()
+                post.save()
+                return redirect('/wall/')
+            else:
+                return render(request, 'wall/edit_post/edit_parents.html', {'form': form})
+        else:
+            form = GeneralPost(instance = post)
+            return render(request, 'wall/edit_post/edit_parents.html', {'form': form})
     elif type == '4':
         post = Colleagues.objects.get(id=ident)
-    return render(request, 'wall/edit_post/edit_general.html', {"post": post})
+        if request.method == "POST":
+            form = GeneralPost(request.POST, instance = post)
+            if form.is_valid():
+                post = form.save(commit=False)
+                post.pub_date = timezone.now()
+                post.save()
+                return redirect('/wall/')
+            else:
+                return render(request, 'wall/edit_post/edit_colleg.html', {'form': form})
+        else:
+            form = GeneralPost(instance = post)
+            return render(request, 'wall/edit_post/edit_colleg.html', {'form': form})
+    
+    return render(request, 'wall/general.html', {"post": post})
 
 
 

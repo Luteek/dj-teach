@@ -7,8 +7,8 @@
         {% for post in posts %}
         <div class="post_full">
             <h3 class="caption_post"> {{post.caption}} </h3>
-
-             <!--- |truncatewords:80|safe позволяет ебнуть только 80 слов в пост    --->
+            <a href="/wall/post/edit/2/{{post.id}}" class="glyphicon glyphicon-pencil">  </a>
+             <!--- |truncatewords:80|safe позволяет ебнуть только 80 слов в пост    ---->
             Content__:  <p class="post_text">  {{post.content|truncatewords:80|safe }}
 
             </p>
